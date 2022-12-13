@@ -1,8 +1,18 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import { fetchTaskThunk, editTaskThunk } from "../../store/thunks";
+
+const withRouter = MyComponent => (props) => {
+  const params = useParams();
+  return (
+    <MyComponent
+      {...props}
+      params={params}/>
+  );
+};
+
 
 class EditTaskContainer extends Component {
   constructor(props) {
@@ -122,4 +132,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(EditTaskContainer);
+export default withRouter(connect(mapState, mapDispatch)(EditTaskContainer));
