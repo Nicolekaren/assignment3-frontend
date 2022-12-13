@@ -28,7 +28,7 @@ class EditTaskContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchTask(this.props.match.params.id);
+    this.props.fetchTask(this.props.params.id);
     this.setState({
       description: this.props.task.description,
       prioritylevel: this.props.task.prioritylevel,
